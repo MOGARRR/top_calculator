@@ -9,8 +9,8 @@ body{
   justify-content: center;
   align-items: center;
   margin: 10% 15%;
-  height: 75vh;
-  width: 65vw;
+  height: 90vh;
+  width: 45vw;
   flex-direction: column;
   padding: 5%;
 }
