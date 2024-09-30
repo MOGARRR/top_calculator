@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="container">
-      <div id="display">123</div>
+      <div id="display"><h1>123</h1></div>
       <div id="buttonContainer">
         <div id="operators">
          <button class="operateButtons" id="add">+</button>
@@ -17,18 +17,28 @@
          <button class="operateButtons" id="devide">/</button>
         </div>
         <div id="numbersList">
-          <button class="numbers">1</button>
-          <button class="numbers">2</button>
-          <button class="numbers">3</button>
-          <button class="numbers">4</button>
-          <button class="numbers">5</button>
-          <button class="numbers">6</button>
-          <button class="numbers">7</button>
-          <button class="numbers">8</button>
-          <button class="numbers">9</button>
+          <div class="numGroup">
+            <button class="numbers">1</button>
+            <button class="numbers">2</button>
+            <button class="numbers">3</button>
+          </div>
+          <div class="numGroup">
+            <button class="numbers">4</button>
+            <button class="numbers">5</button>
+            <button class="numbers">6</button>
+          </div>
+          <div class="numGroup">
+            <button class="numbers">7</button>
+            <button class="numbers">8</button>
+            <button class="numbers">9</button>
+          </div>
+          <div class="numGroup" id="zeroContain">
+            <div></div>
+            <button class="number" id="zero">0</button> 
+            <div></div>
+          </div>
         </div>
         <div id="calOptions">
-          <button class="calButtons" id="0">0</button>
           <button class="calButtons" id="decimal">.</button>
           <button class="calButtons" id="clear">C</button>
           <button class="calButtons" id="delete"><</button>

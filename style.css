@@ -1,10 +1,10 @@
 body{
-  background-color: aquamarine;
+  background-color:rgb(138, 132, 132);
   display: flex;
   justify-content: center;
 }
+
 #container{
-  background-color: brown;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,19 +13,25 @@ body{
   width: 65vw;
   flex-direction: column;
   padding: 5%;
-  border-style: solid;
-  border: black;
 }
+
 #display{
-  background-color: yellow;
+  background-color: rgb(54, 52, 52);
+  color: aliceblue;
   height: 25%;
   width: 80%;
   display: flex;
+  font-family: monospace;
+  font-size:xx-large;
   justify-content: center;
   align-items: center;
+  border-style: solid;
+  border-radius: 5%;
+  overflow: hidden;
 }
+
 #buttonContainer{
-  background-color: greenyellow;
+  background-color: rgb(78, 78, 77);
   padding: 2%;
   display: flex;
   flex-direction: column;
@@ -33,22 +39,31 @@ body{
   height: 80%;
   width: 76%;
 }
+
 #operators{
   background-color: gray;
   display: flex;
   width: 100%;
   height: 16.5%;
 }
+
 #numbersList{
-  background-color: chocolate;
+ background-color: gray;
   display: flex;
-  align-items: s;
-  flex-wrap: wrap;
+  flex-flow: column;
+  align-items: center;
   width: 100%;
   height: 66%;
 }
+
+.numGroup{
+  display: flex;
+  width: 100%;
+  flex: auto;
+}
+
 #calOptions{
-  background-color: blueviolet;
+  background-color: gray;
   display: flex;
   width: 100%;
   height: 16.5%;
@@ -56,13 +71,26 @@ body{
 
 .operateButtons{
  flex: auto;
-  font-size: larger;
+}
+
+.numbers{
+  flex-grow: 1;
 }
 
 .calButtons{
   flex: auto;
-  font-size: larger;
 }
-.numbers{
+
+button{
+  border-radius: 15%;
+  margin: 1%;
+  font-family: monospace;
+  font-size: x-large;
+}
+#zeroContain{
+  display: flex;
+  justify-content: center;
+}
+#zero{
   width: 33%;
 }
