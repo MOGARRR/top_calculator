@@ -92,5 +92,6 @@ button{
   justify-content: center;
 }
 #zero{
+  flex-grow: 0;
   width: 33%;
 }

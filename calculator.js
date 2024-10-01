@@ -15,8 +15,6 @@ const divideFunc = function(num1, num2){
   return num1 / num2;
 }
 
-let num1 = 10;
-let num2 = 5;
 let operator = '/';
 
 let operate = function(operator, num1, num2){
@@ -30,5 +28,19 @@ let operate = function(operator, num1, num2){
     return divideFunc(num1, num2);
   }
 }
+//
 
-console.log(operate(operator,num1,num2))
+//digit button functions
+let display = document.querySelector('#display')
+let num1 = 0;
+let num2 = 0;
+let numbers = document.querySelectorAll('.numbers');
+Array.from(numbers);
+
+for(let number of numbers){
+  number.addEventListener('click',()=>{
+    display.textContent += number.textContent;
+  });
+}
+
+//operator button functions
