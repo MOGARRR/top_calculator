@@ -1,35 +1,42 @@
 // operator functions
-const addFunc = function(num1, num2){
-  return num1 + num2;
+const addFunc = function(array){
+  return array.reduce((total,currentnum) => total + currentnum,);
 }
-const subtractFunc = function(num1, num2){
-  return num1 - num2;
+const subtractFunc = function(array){
+  return array.reduce((total,currentnum) => total - currentnum,);
 }
-const multiplyFunc = function(num1, num2){
-  return num1 * num2;
+const multiplyFunc = function(array){
+  return array.reduce((total,currentnum) => total * currentnum,);
 }
-const divideFunc = function(num1, num2){
-  return num1 / num2;
+const divideFunc = function(array){
+  return array.reduce((total,currentnum) => total / currentnum,);
 }
+//
 
-let operate = function(operator, num1, num2){
+// operate function
+let operate = function(array){
+  let operators = ['+','-','x','/'];
+  let operator = '';
+  for(let i = 0; i <= array.length; i++){
+    if(operators.includes(array[i])){
+      operator = array[i];
+      array.splice(i,1);
+    }
+  }
   if(operator === '+'){
-    return addFunc(num1, num2);
+    return addFunc(array);
   }else if(operator === '-'){
-    return subtractFunc(num1, num2);
+    return subtractFunc(array);
   }else if(operator === 'x'){
-    return multiplyFunc(num1, num2)
+    return multiplyFunc(array)
   }else if(operator ==='/'){
-    return divideFunc(num1, num2);
+    return divideFunc(array);
   }
 }
 //
 
 //digit button functions
 let display = document.querySelector('#display')
-let num1 = 0;
-let num2 = 0;
-let operater = null;
 let numbers = document.querySelectorAll('.numbers');
 Array.from(numbers);
 
@@ -46,10 +53,6 @@ Array.from(operatorButtons);
 
 for(let operateButton of operatorButtons){
   operateButton.addEventListener('click', () =>{
-    num1 = display.textContent;
-    display.textContent += operateButton.textContent;
-    operater = operateButton.textContent;
-
   });
 }
 //
