@@ -21,7 +21,10 @@ let operate = function(array){
     if(operators.includes(array[i])){
       operator = array[i];
       array.splice(i,1);
+    } else{
+      Number(array[i]);
     }
+
   }
   if(operator === '+'){
     return addFunc(array);
@@ -35,11 +38,9 @@ let operate = function(array){
 }
 //
 
-//digit button functions
+//digit button function
 let display = document.querySelector('#display')
 let numbers = document.querySelectorAll('.numbers');
-Array.from(numbers);
-
 for(let number of numbers){
   number.addEventListener('click',()=>{
     display.textContent += number.textContent;
@@ -47,19 +48,24 @@ for(let number of numbers){
 }
 //
 
-//operator button functions
+//operator button function
 let operatorButtons = document.querySelectorAll('.operateButtons');
-Array.from(operatorButtons);
-let numArray = [];
-
 for(let operateButton of operatorButtons){
   operateButton.addEventListener('click', () =>{
-    numArray.push(display.textContent);
-    display.textContent += operateButton.textContent;
-    numArray.push(operateButton.textContent);
+    display.textContent += ` ${operateButton.textContent} `;
     for(let button of operatorButtons){
       button.setAttribute('disabled',true);
     }
   });
-}
-//
+} 
+
+// equal button function
+let equalButton = document.querySelector('#equal');
+equalButton.addEventListener('click', () =>{
+  let equationStr = display.textContent;
+  let equationArray = equationStr.split(' ')
+  display.textContent = operate(equationArray);
+  for(let button of operatorButtons){
+    button.removeAttribute('disabled');
+  }
+});
