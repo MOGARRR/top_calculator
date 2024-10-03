@@ -50,9 +50,16 @@ for(let number of numbers){
 //operator button functions
 let operatorButtons = document.querySelectorAll('.operateButtons');
 Array.from(operatorButtons);
+let numArray = [];
 
 for(let operateButton of operatorButtons){
   operateButton.addEventListener('click', () =>{
+    numArray.push(display.textContent);
+    display.textContent += operateButton.textContent;
+    numArray.push(operateButton.textContent);
+    for(let button of operatorButtons){
+      button.setAttribute('disabled',true);
+    }
   });
 }
 //
