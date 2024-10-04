@@ -9,6 +9,7 @@ const multiplyFunc = function(array){
   return array.reduce((total,currentnum) => total * currentnum,);
 }
 const divideFunc = function(array){
+  
   return array.reduce((total,currentnum) => total / currentnum,);
 }
 //
@@ -17,23 +18,22 @@ const divideFunc = function(array){
 let operate = function(array){
   let operators = ['+','-','x','/'];
   let operator = '';
-  for(let i = 0; i <= array.length; i++){
-    if(operators.includes(array[i])){
-      operator = array[i];
-      array.splice(i,1);
-    } else{
-      Number(array[i]);
+  let numArray =[];
+  for(let num of array){
+    if(operators.includes(num)){
+      operator = num;
+    }else{
+    numArray.push(parseInt(num))
     }
-
   }
   if(operator === '+'){
-    return addFunc(array);
+    return addFunc(numArray);
   }else if(operator === '-'){
-    return subtractFunc(array);
+    return subtractFunc(numArray);
   }else if(operator === 'x'){
-    return multiplyFunc(array)
+    return multiplyFunc(numArray)
   }else if(operator ==='/'){
-    return divideFunc(array);
+    return divideFunc(numArray);
   }
 }
 //
