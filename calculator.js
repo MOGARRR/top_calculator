@@ -9,8 +9,11 @@ const multiplyFunc = function(array){
   return array.reduce((total,currentnum) => total * currentnum,);
 }
 const divideFunc = function(array){
-  
-  return array.reduce((total,currentnum) => total / currentnum,);
+  if(array[0] === 0 || array[1] === 0){
+    return 0;
+  }else{
+    return array.reduce((total,currentnum) => total / currentnum,);
+  }
 }
 //
 
