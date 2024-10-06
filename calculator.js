@@ -10,6 +10,7 @@ const multiplyFunc = function(array){
 }
 const divideFunc = function(array){
   if(array[0] === 0 || array[1] === 0){
+    alert("ha nice try buster");
     return 0;
   }else{
     return array.reduce((total,currentnum) => total / currentnum,);
@@ -61,13 +62,24 @@ for(let operateButton of operatorButtons){
     }
   });
 } 
+//
 
 // equal button function
 let equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () =>{
   let equationStr = display.textContent;
-  let equationArray = equationStr.split(' ')
+  let equationArray = equationStr.split(' ');
   display.textContent = operate(equationArray);
+  for(let button of operatorButtons){
+    button.removeAttribute('disabled');
+  }
+});
+//
+
+// clear button function
+let clearButton = document.querySelector('#clear');
+clearButton.addEventListener('click',() =>{
+  display.textContent = '';
   for(let button of operatorButtons){
     button.removeAttribute('disabled');
   }
