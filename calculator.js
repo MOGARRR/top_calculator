@@ -70,9 +70,7 @@ equalButton.addEventListener('click', () =>{
   let equationStr = display.textContent;
   let equationArray = equationStr.split(' ');
   display.textContent = operate(equationArray);
-  for(let button of operatorButtons){
-    button.removeAttribute('disabled');
-  }
+  operatorButtonCheck(display.textContent.split(''));
 });
 //
 
@@ -80,7 +78,32 @@ equalButton.addEventListener('click', () =>{
 let clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click',() =>{
   display.textContent = '';
-  for(let button of operatorButtons){
-    button.removeAttribute('disabled');
-  }
+  operatorButtonCheck(display.textContent.split(''));
 });
+//
+
+// delete button function
+let deleteButton = document.querySelector('#delete');
+deleteButton.addEventListener('click', () =>{
+  let currentDisplay = display.textContent.split('');
+  currentDisplay.pop();
+  operatorButtonCheck(currentDisplay);
+  display.textContent = currentDisplay.join('')
+});
+//
+
+//operator button check function
+let operatorButtonCheck = function(array){
+  let operators = ['+','-','x','/'];
+  let confirm = true;
+  for(let operator of operators){
+    if(array.includes(operator)){
+      confirm = false;
+    }
+  }
+  if(confirm === true){
+    for(let button of operatorButtons){
+      button.removeAttribute('disabled');
+    }
+  }
+}
