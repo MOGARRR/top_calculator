@@ -69,7 +69,11 @@ let equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () =>{
   let equationStr = display.textContent;
   let equationArray = equationStr.split(' ');
-  display.textContent = Math.round(operate(equationArray) *100) / 100;
+  let answer = Math.round(operate(equationArray) *100) / 100;
+  if(isNaN(answer) === true){
+    answer = 'Error';
+  }
+  display.textContent = answer;
   operatorButtonCheck(display.textContent.split(''));
 });
 //
