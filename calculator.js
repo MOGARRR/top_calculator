@@ -1,13 +1,13 @@
 // operator functions
 const addFunc = function(array){
   return array.reduce((total,currentnum) => total + currentnum,);
-}
+};
 const subtractFunc = function(array){
   return array.reduce((total,currentnum) => total - currentnum,);
-}
+};
 const multiplyFunc = function(array){
   return array.reduce((total,currentnum) => total * currentnum,);
-}
+};
 const divideFunc = function(array){
   if(array[0] === 0 || array[1] === 0){
     alert("ha nice try buster");
@@ -15,7 +15,7 @@ const divideFunc = function(array){
   }else{
     return array.reduce((total,currentnum) => total / currentnum,);
   }
-}
+};
 //
 
 // operate function
@@ -27,7 +27,7 @@ let operate = function(array){
     if(operators.includes(num)){
       operator = num;
     }else{
-    numArray.push(parseInt(num))
+    numArray.push(parseFloat(num));
     }
   }
   if(operator === '+'){
@@ -39,7 +39,7 @@ let operate = function(array){
   }else if(operator ==='/'){
     return divideFunc(numArray);
   }
-}
+};
 //
 
 //digit button function
@@ -49,7 +49,7 @@ for(let number of numbers){
   number.addEventListener('click',()=>{
     display.textContent += number.textContent;
   });
-}
+};
 //
 
 //operator button function
@@ -61,7 +61,7 @@ for(let operateButton of operatorButtons){
       button.setAttribute('disabled',true);
     }
   });
-} 
+}; 
 //
 
 // equal button function
@@ -69,7 +69,7 @@ let equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () =>{
   let equationStr = display.textContent;
   let equationArray = equationStr.split(' ');
-  display.textContent = operate(equationArray);
+  display.textContent = Math.round(operate(equationArray) *100) / 100;
   operatorButtonCheck(display.textContent.split(''));
 });
 //
@@ -78,7 +78,9 @@ equalButton.addEventListener('click', () =>{
 let clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click',() =>{
   display.textContent = '';
-  operatorButtonCheck(display.textContent.split(''));
+  let empty = [];
+  operatorButtonCheck(empty);
+  decimalButtonCheck(empty);
 });
 //
 
@@ -88,6 +90,7 @@ deleteButton.addEventListener('click', () =>{
   let currentDisplay = display.textContent.split('');
   currentDisplay.pop();
   operatorButtonCheck(currentDisplay);
+  decimalButtonCheck(currentDisplay);
   display.textContent = currentDisplay.join('')
 });
 //
@@ -97,7 +100,7 @@ let operatorButtonCheck = function(array){
   let operators = ['+','-','x','/'];
   let confirm = true;
   for(let operator of operators){
-    if(array.includes(operator)){
+    if(array.includes(operator) ){
       confirm = false;
     }
   }
@@ -106,4 +109,27 @@ let operatorButtonCheck = function(array){
       button.removeAttribute('disabled');
     }
   }
-}
+};
+//
+
+// decimal button function
+let decimalButton = document.querySelector('#decimal');
+decimalButton.addEventListener('click', () =>{
+  display.textContent += '.';
+  decimalButton.setAttribute('disabled',true);
+});
+//
+
+// decimal button checker
+let decimalButtonCheck = function(array){
+  let confirm = true;
+  for(let char of array){
+    if(array.includes('.')){
+      confirm = false;
+    }    
+  }
+  if(confirm === true){
+    decimalButton.removeAttribute('disabled');
+  }
+};
+//
